@@ -46,3 +46,5 @@ a que tanto se adapta el perfil del usuario a la posición.
     Iniciar el worker para despachar Jobs: <b><i>docker-compose run --rm -d artisan queue:work </i></b>
   </li>
 </ul>
+
+Se puede acceder al front end del servicio desde: http://127.0.0.1/

@@ -21,10 +21,6 @@ a que tanto se adapta el perfil del usuario a la posición.
   <li>
     Copiar el archivo .env.example a .env
   </li>
-
-   <li>
-    Agregar en el .env las credenciales de rabbitmq
-  </li>
   
   <li>
     Instalar composer: <b><i>docker-compose run --rm --user postulaciones composer install</i></b>

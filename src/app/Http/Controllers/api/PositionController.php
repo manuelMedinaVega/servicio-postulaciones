@@ -8,7 +8,6 @@ use App\Models\Position;
 
 class PositionController extends Controller
 {
-
     public function index()
     {
         return PositionResource::collection(Position::whereNotNull('opened_at')->paginate());

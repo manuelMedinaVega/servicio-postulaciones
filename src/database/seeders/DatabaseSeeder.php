@@ -71,7 +71,7 @@ class DatabaseSeeder extends Seeder
                     Desarrollador de software orientado al buen diseño, trabajo en equipo y mejores prácticas de programación. He creado aplicaciones y sitios web desde cero. Por otro lado, he participado en proyectos nacionales e internacionales generando una excelentes resultados. Por último, soy un entusiasta de la tecnología y el aprendizaje, ya que creo que no hay excusas para no aprender algo nuevo. Saludos cordiales.
 
                     Principales tecnologías: React, Angular, .NET y Java.
-                    Habilidades blandas: Trabajo en equipo, empatía y creatividad. 
+                    Habilidades blandas: Trabajo en equipo, empatía y creatividad.
                     Funciones principales:
                     - Desarrollé nuevos requerimientos para mejorar la adaptabilidad de la plataforma, incrementando su flexibilidad ante nuevas necesidades de los usuarios.
                     - Refactoricé módulos clave del sistema, lo que redujo en un 20% los problemas reportados y mejoró la estabilidad general.
@@ -84,7 +84,7 @@ class DatabaseSeeder extends Seeder
             ]);*/
             Company::create([
                 'name' => 'Kuali',
-                'logo' => 'https://placehold.co/640x480?text=K'
+                'logo' => 'https://placehold.co/640x480?text=K',
             ]);
             Position::create([
                 'company_id' => 1,

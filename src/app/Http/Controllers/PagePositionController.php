@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Application;
 use App\Models\Position;
-use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class PagePositionController extends Controller
@@ -13,19 +11,11 @@ class PagePositionController extends Controller
     {
         $position->load('company');
 
-        $user = Auth::user();
-
-        if (! $user) {
-            $applied = false;
-        } else {
-            $applied = Application::where('position_id', $position->id)
-                ->where('user_id', $user->id)
-                ->exists();
-        }
+        $user = auth()->user();
 
         return Inertia::render('Position', [
             'position' => $position,
-            'hasApplied' => $applied,
+            'hasApplied' => $user ? $user->hasAppliedTo($position) : false,
         ]);
     }
 }

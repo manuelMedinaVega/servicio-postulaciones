@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Position extends Model
 {
@@ -18,6 +19,11 @@ class Position extends Model
     public function getDetailsUrlAttribute()
     {
         return route('pages.position', $this);
+    }
+
+    public function candidates(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'applications')->using(Application::class);
     }
 
     protected $appends = ['details_url'];

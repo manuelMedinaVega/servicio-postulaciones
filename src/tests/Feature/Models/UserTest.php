@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Application;
 use App\Models\Position;
 use App\Models\User;
 

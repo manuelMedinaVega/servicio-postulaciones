@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Company;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -25,5 +26,14 @@ class PositionFactory extends Factory
             'location' => $this->faker->city,
             'opened_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
         ];
+    }
+
+    public function closed(?Carbon $date = null): self
+    {
+        return $this->state(
+            fn ($attributes) => [
+                'closed_at' => $date ?? Carbon::now(),
+            ]
+        );
     }
 }

@@ -37,3 +37,17 @@ it('includes positions links', function () {
                 ->where('positions.1.details_url', route('pages.position', $secondPosition));
         });
 });
+
+it('shows only open positions', function () {
+    // Arrange
+    $openPosition = Position::factory()->create();
+    Position::factory()->closed()->create();
+
+    // Act & Assert
+    get(route('pages.home'))
+        ->assertOk()
+        ->assertInertia(function ($page) use ($openPosition) {
+            $page->has('positions', 1)
+                ->where('positions.0.id', $openPosition->id);
+        });
+});

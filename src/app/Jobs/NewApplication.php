@@ -12,7 +12,7 @@ class NewApplication implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    private $data;
+    public $data;
 
     /**
      * Create a new job instance.

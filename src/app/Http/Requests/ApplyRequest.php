@@ -27,31 +27,33 @@ class ApplyRequest extends FormRequest
             'position_id' => [
                 'required',
                 'exists:positions,id',
-                function($attribute, $value, $fail) {
+                function ($attribute, $value, $fail) {
 
                     $position = Position::find($value);
 
-                    if(!$position) return;
+                    if (! $position) {
+                        return;
+                    }
 
-                    if(is_null($position->opened_at)) {
+                    if (is_null($position->opened_at)) {
                         $fail('This position is not open for application.');
                     }
 
-                    if(!is_null($position->closed_at)) {
+                    if (! is_null($position->closed_at)) {
                         $fail('This position is closed.');
                     }
                 },
                 Rule::unique('applications')
                     ->where('user_id', $this->user()->id)
-                    ->where('position_id', $this->input('position_id'))
-            ]
+                    ->where('position_id', $this->input('position_id')),
+            ],
         ];
     }
 
     public function messages(): array
     {
         return [
-            'position_id.unique' => 'You have already applied for this position.'
+            'position_id.unique' => 'You have already applied for this position.',
         ];
     }
 }

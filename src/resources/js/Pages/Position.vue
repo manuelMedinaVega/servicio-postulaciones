@@ -12,14 +12,14 @@ const props = defineProps({
 const user = usePage().props.auth.user;
 const isApplying = ref(false);
 const applied = ref(false);
-
 const form = useForm({
     position_id: null
 })
 
 const submit = () => {
     isApplying.value = true;
-    form.position_id = props.position.id;
+    //form.position_id = props.position.id;
+    form.position_id = 2
 
     form.post(route('positions.apply'), {
         preserveScroll: true,
@@ -75,6 +75,11 @@ const submit = () => {
                 </div>
                 <div class="mt-6 space-y-4" v-else>
                     <form @submit.prevent="submit">
+
+                        <div v-if="form.errors.position_id" class="text-red-500 text-sm mb-2">
+                            {{ form.errors.position_id }}
+                        </div>
+
                         <button
                             type="submit"
                             :disabled="isApplying || applied"

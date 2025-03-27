@@ -9,7 +9,9 @@ class PageHomeController extends Controller
 {
     public function __invoke()
     {
-        $positions = Position::with('company')->get();
+        $positions = Position::with('company')
+            ->open()
+            ->get();
 
         return Inertia::render('Home', [
             'positions' => $positions,
